@@ -18,54 +18,63 @@ namespace ImageProgram
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         MainControl mainControl = new MainControl();
         UserControl1 userControl1 = new UserControl1();
-        TestPage testPage = new TestPage();
-        Window testWin;
+        RegisterPage registerPage = new RegisterPage();
+        UserMenu userMenu = new UserMenu();
+        //Window testWin;
 
         public MainWindow()
         {
             InitializeComponent();
             MainGrid.Children.Add(mainControl);
 
-            mainControl.btn_image.Click += new RoutedEventHandler(btn_image_Click);
-            mainControl.btn_recent.Click += btn_recent_Click;
-            mainControl.btn_test.Click += btn_test_Click;
-            userControl1.btn_back.Click += btn_back_Click;
+            //mainControl.Btn_login.Click += new RoutedEventHandler(Btn_login_Click);
+            mainControl.Btn_register.Click += Btn_register_Click;
+            mainControl.Btn_findPassword.Click += Btn_findPassword_Click;
+            userControl1.Btn_back.Click += Btn_back_Click;
+            registerPage.Btn_back.Click += Btn_back_Click;
         }
 
-        public void btn_back_Click(object sender, RoutedEventArgs e)
+        public void Btn_back_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
             MainGrid.Children.Add(mainControl);
         }
 
-        public void btn_recent_Click(object sender, RoutedEventArgs e)
+        public void Btn_register_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            MainGrid.Children.Add(userControl1);
+            MainGrid.Children.Add(registerPage);
         }
 
-        public void btn_image_Click(object sender, RoutedEventArgs e)
+        public void Btn_login_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            MainGrid.Children.Add(userControl1);
-            userControl1.wp.Children.Clear();
+            if (mainControl.IDInput.Text != "")
+            {
+                MainGrid.Children.Clear();
+                MainGrid.Children.Add(registerPage);
+            }
+            //MainGrid.Children.Add(userMenu);
 
-            // 이미지 추가
-            ImageItem image = new ImageItem();
-            ImageItem image1 = new ImageItem();
-            userControl1.wp.Children.Add(image);
-            userControl1.wp.Children.Add(image1);
+
+            //// 이미지 추가
+            //ImageItem image = new ImageItem();
+            //ImageItem image1 = new ImageItem();
+            //userControl1.wp.Children.Add(image);
+            //userControl1.wp.Children.Add(image1);
         }
 
 
-        public void btn_test_Click(object sender, RoutedEventArgs e)
+        public void Btn_findPassword_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            MainGrid.Children.Add(testPage);
+            MainGrid.Children.Add(userMenu);
 
 
             //testWin = new TestWin();

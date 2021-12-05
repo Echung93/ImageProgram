@@ -23,65 +23,84 @@ namespace ImageProgram
 
     public partial class MainControl : UserControl
     {
+        string id;
+        string pw;
+        DB db = new DB();
+        List<User> userList = new List<User>();
+        List<Log> logList = new List<Log>();
+        UserMenu userMenu = new UserMenu();
+
         public MainControl()
         {
             InitializeComponent();
-            statusText.Text = "패스워드를 입력해주세요.";
-            IDInput.Text = "아이디를 입력해주세요.";
-            this.IDInput.PreviewTextInput += Input_TextInput;
-            this.IDInput.TextChanged += IDInput_TextChanged;
+        }
+
+        public void Btn_register_Click(object sender, RoutedEventArgs e)
+        {
 
 
         }
-        public string id { get; set; }
-        public string password { get; set; }
 
-        public void btn_recent_Click(object sender, RoutedEventArgs e)
+        private void Btn_login_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void btn_image_Click(object sender, RoutedEventArgs e)
-        {
-
-            Upload upload2 = new Upload()
+            string action = "로그인";
+            bool idCheck = false;
+            bool pwCheck = false;
+            userList = db.userList(userList);
+            logList = db.logList(logList);
+            id = IDInput.Text;
+            pw = PWInput.Password;
+            for (int i = 0; i < userList.Count; i++)
             {
-                id = IDInput.Text,
-                password = PWInput.Password
-            };
-
-        }
-
-
-        private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            if (PWInput.Password != "")
+                if (userList[i].UserId == (id))
+                {
+                    if (userList[i].UserPassword == (pw))
+                    {
+                        int count = logList.Count;
+                        Console.Write("        로그인 성공");
+                        string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+                        db.LogSave(count+1 ,userList[i].UserName,time ,action, null);
+                        pwCheck = true;
+                        IDInput.Text = userList[i].UserName;
+                    }
+                    idCheck = true;
+                }
+            }
+            
+            if (!idCheck)
             {
-                PWInput.Password += e.Handled = !IsNumeric(e.Text);
+                MessageBox.Show("존재하지 않는 회원입니다. 다시 로그인 해주세요.");
+                IDInput.Text = "";
             }
 
+            else if (!pwCheck)
+            {
+                MessageBox.Show("틀린 비밀번호 입니다. 비밀번호를 다시 입력해주세요.");
+                IDInput.Text = "";
+            }
             else
-            {
-                statusText.Text = "패스워드를 입력해주세요.";
+            {                
             }
         }
-
+       
         private void Input_TextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new Regex("[^a-z0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 
-        private void IDInput_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void Password_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9a-z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void Btn_findPassword_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private bool IsNumeric(string source)
-        {
-            Regex regex = new Regex("[a-zA-Z_0-9]");
-
-            return !regex.IsMatch(source);
-        }
+        
     }
 }

@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 namespace ImageProgram
 {
     /// <summary>
-    /// testPage.xaml에 대한 상호 작용 논리
+    /// UserMenu.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class TestPage : UserControl
+    public partial class UserMenu : UserControl
     {
-        public TestPage()
+        public UserMenu()
         {
             InitializeComponent();
         }
+
     }
 }
