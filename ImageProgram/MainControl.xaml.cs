@@ -23,21 +23,24 @@ namespace ImageProgram
 
     public partial class MainControl : UserControl
     {
-        string id;
-        string pw;
+        RegisterPage registerPage = new RegisterPage();
+        UserMenu usermenu = new UserMenu();
         DB db = new DB();
+        
+        
         List<User> userList = new List<User>();
         List<Log> logList = new List<Log>();
-        UserMenu userMenu = new UserMenu();
+
+        string id;
+        string pw;
+        public static string loginUser;
 
         public MainControl()
         {
             InitializeComponent();
         }
-
         public void Btn_register_Click(object sender, RoutedEventArgs e)
         {
-
 
         }
 
@@ -59,40 +62,40 @@ namespace ImageProgram
                         int count = logList.Count;
                         Console.Write("        로그인 성공");
                         string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                        db.LogSave(count+1 ,userList[i].UserName,time ,action, null);
+                        db.LogSave(count + 1, userList[i].UserName, time, action, null);
                         pwCheck = true;
-                        IDInput.Text = userList[i].UserName;
+                        loginUser = userList[i].UserName;
+                        loginUserName.Text = $"{loginUser}님이 로그인 하셨습니다.";
+                        usermenu.loginUser.Text = $"{loginUser}님 환영합니다.";                       
                     }
                     idCheck = true;
                 }
             }
-            
+
             if (!idCheck)
             {
                 MessageBox.Show("존재하지 않는 회원입니다. 다시 로그인 해주세요.");
                 IDInput.Text = "";
+                PWInput.Clear();
             }
 
             else if (!pwCheck)
             {
                 MessageBox.Show("틀린 비밀번호 입니다. 비밀번호를 다시 입력해주세요.");
                 IDInput.Text = "";
+                PWInput.Clear();
             }
             else
-            {                
+            {
+                MessageBox.Show("로그인 성공");
+
             }
-        }
-       
-        private void Input_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^a-z0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
         }
 
 
         private void Password_TextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9a-z]+");
+            Regex regex = new Regex("[^0-9a-z]");
             e.Handled = regex.IsMatch(e.Text);
         }
 
@@ -101,6 +104,16 @@ namespace ImageProgram
 
         }
 
-        
+        private void IDInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[0-9a-z]+");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (!boolean)
+            {
+                IDInput.Text = "";
+            }
+
+        }
     }
 }

@@ -7,10 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>        
-        <Label Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,19,0,0"/>
+        
         <Button Name="userDelete" Content="회원탈퇴" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="30,60,0,0" Height="40"/>
         <Button Name="userInformationAlter" Content="회원정보수정" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="30,140,0,0" Height="40" />
         <Button Name="searchImage" Content="이미지 검색" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="30,220,0,0" Height="40" />
+        <TextBlock Name="loginUser" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="30,19,0,0" Width="161"/>
 
     </Grid>
 </UserControl>

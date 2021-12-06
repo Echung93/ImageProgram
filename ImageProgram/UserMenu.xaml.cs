@@ -20,10 +20,12 @@ namespace ImageProgram
     /// </summary>
     public partial class UserMenu : UserControl
     {
+        MainControl main = new MainControl();
+
         public UserMenu()
         {
             InitializeComponent();
+            loginUser.Text = main.loginUserName.Text;
         }
-
     }
 }

@@ -26,6 +26,8 @@ namespace ImageProgram
         UserControl1 userControl1 = new UserControl1();
         RegisterPage registerPage = new RegisterPage();
         UserMenu userMenu = new UserMenu();
+
+        public static string name;
         //Window testWin;
 
         public MainWindow()
@@ -33,7 +35,7 @@ namespace ImageProgram
             InitializeComponent();
             MainGrid.Children.Add(mainControl);
 
-            //mainControl.Btn_login.Click += new RoutedEventHandler(Btn_login_Click);
+            mainControl.Btn_login.Click += Btn_login_Click;
             mainControl.Btn_register.Click += Btn_register_Click;
             mainControl.Btn_findPassword.Click += Btn_findPassword_Click;
             userControl1.Btn_back.Click += Btn_back_Click;
@@ -55,26 +57,28 @@ namespace ImageProgram
         public void Btn_login_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            if (mainControl.IDInput.Text != "")
+            
+            if (mainControl.loginUserName.Text!= "")
+            {
+                int num = mainControl.loginUserName.Text.IndexOf("님");
+                name = mainControl.loginUserName.Text.Substring(0,num);               
+                MainGrid.Children.Clear();                
+                MainGrid.Children.Add(userMenu);
+            }
+
+            else
             {
                 MainGrid.Children.Clear();
-                MainGrid.Children.Add(registerPage);
+                MainGrid.Children.Add(mainControl);
             }
-            //MainGrid.Children.Add(userMenu);
 
-
-            //// 이미지 추가
-            //ImageItem image = new ImageItem();
-            //ImageItem image1 = new ImageItem();
-            //userControl1.wp.Children.Add(image);
-            //userControl1.wp.Children.Add(image1);
         }
 
 
         public void Btn_findPassword_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            MainGrid.Children.Add(userMenu);
+            MainGrid.Children.Add(registerPage);
 
 
             //testWin = new TestWin();
