@@ -26,6 +26,9 @@ namespace ImageProgram
         UserControl1 userControl1 = new UserControl1();
         RegisterPage registerPage = new RegisterPage();
         UserMenu userMenu = new UserMenu();
+        Find find = new Find();
+        FindID findID = new FindID();
+        FindPW findPW = new FindPW();
 
         public static string name;
         //Window testWin;
@@ -40,12 +43,26 @@ namespace ImageProgram
             mainControl.Btn_findPassword.Click += Btn_findPassword_Click;
             userControl1.Btn_back.Click += Btn_back_Click;
             registerPage.Btn_back.Click += Btn_back_Click;
+            find.Btn_back.Click += Btn_back_Click;
+            find.Btn_findID.Click += Btn_findID_Click;
+            find.Btn_findPW.Click += Btn_findPW_Click;
+            findID.Btn_back.Click += Btn_back_Click1;
+            findPW.Btn_back.Click += Btn_back_Click1;
+            findID.findPW.Click += Btn_findPW_Click;
+            //findID.Btn_back.Click += Btn_back_Click;
+            //findPW.Btn_back.Click += Btn_back_Click;
         }
 
         public void Btn_back_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
             MainGrid.Children.Add(mainControl);
+        }
+
+        public void Btn_back_Click1(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(find);
         }
 
         public void Btn_register_Click(object sender, RoutedEventArgs e)
@@ -57,11 +74,12 @@ namespace ImageProgram
         public void Btn_login_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            
-            if (mainControl.loginUserName.Text!= "")
+            name = mainControl.login();
+            if (name != null)
             {
                 int num = mainControl.loginUserName.Text.IndexOf("님");
-                name = mainControl.loginUserName.Text.Substring(0,num);               
+                name = mainControl.loginUserName.Text.Substring(0,num);
+                userMenu.loginUser.Text = $"{name}님 환영합니다.";
                 MainGrid.Children.Clear();                
                 MainGrid.Children.Add(userMenu);
             }
@@ -78,17 +96,34 @@ namespace ImageProgram
         public void Btn_findPassword_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            MainGrid.Children.Add(registerPage);
-
-
-            //testWin = new TestWin();
-            //testWin.Owner = this;
-            //testWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-
-            //this.Hide();
-            //testWin.ShowDialog();
-            //this.Show();
+            MainGrid.Children.Add(find);
         }
+
+        public void Btn_findID_Click(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(findID);
+        }
+
+        public void Btn_findPW_Click(object sender, RoutedEventArgs e)
+        {
+            MainGrid.Children.Clear();
+            MainGrid.Children.Add(findPW);
+        }
+
+        //public void Btn_findPassword_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainGrid.Children.Clear();
+        //    MainGrid.Children.Add(find);
+        //}
+
+        //public void Btn_findPassword_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainGrid.Children.Clear();
+        //    MainGrid.Children.Add(find);
+        //}
+
+
+
     }
 }

@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="Btn_login" Content="로그인" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="78" Margin="195,76,10,0" Click="Btn_login_Click"/>
-        <Button x:Name="Btn_findPassword" Content="비밀번호 찾기" HorizontalAlignment="Center" VerticalAlignment="Top" Width="98" Height="34" Margin="33,190,169,0" Click="Btn_findPassword_Click"/>
-        <Button x:Name="Btn_register" Content="회원가입" HorizontalAlignment="Center" VerticalAlignment="Top" Width="98" Height="34" Margin="169,190,33,0" Click="Btn_register_Click"/>
+        <Button x:Name="Btn_login" Content="로그인" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="78" Margin="180,75,10,0" Click="Btn_login_Click"/>
+        <Button x:Name="Btn_findPassword" Content="아이디/비밀번호 찾기" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="34" Margin="30,170,169,0" Click="Btn_findPassword_Click"/>
+        <Button x:Name="Btn_register" Content="회원가입" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="34" Margin="204,170,33,0" Click="Btn_register_Click"/>
         <TextBlock Name="loginBlock" FontSize="20" HorizontalAlignment="Center" Margin="125,23,106,0" TextWrapping="Wrap" Text="LOGIN" VerticalAlignment="Top" Width="69" Height="27"/>
         <TextBox x:Name="IDInput" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Margin="32,85,0,0" PreviewTextInput="IDInput_PreviewTextInput"/>
         <PasswordBox Name="PWInput" HorizontalAlignment="Left" Height="25"  Margin="32,120,0,0" VerticalAlignment="Top" Width="143" PreviewTextInput="Password_TextInput"/>

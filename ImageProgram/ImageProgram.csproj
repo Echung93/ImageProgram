@@ -98,9 +98,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Find.xaml.cs">
+      <DependentUpon>Find.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FindID.xaml.cs">
+      <DependentUpon>FindID.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FindPW.xaml.cs">
+      <DependentUpon>FindPW.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserMenu.xaml.cs">
       <DependentUpon>UserMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="Find.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FindID.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FindPW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ImageItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

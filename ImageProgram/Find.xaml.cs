@@ -16,13 +16,11 @@ using System.Windows.Shapes;
 namespace ImageProgram
 {
     /// <summary>
-    /// UserMenu.xaml에 대한 상호 작용 논리
+    /// find.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class UserMenu : UserControl
+    public partial class Find : UserControl
     {
-       
-       
-        public UserMenu()
+        public Find()
         {
             InitializeComponent();
         }

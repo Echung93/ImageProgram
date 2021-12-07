@@ -46,6 +46,54 @@ namespace ImageProgram
 
         private void Btn_login_Click(object sender, RoutedEventArgs e)
         {
+            //string action = "로그인";
+            //bool idCheck = false;
+            //bool pwCheck = false;
+            //userList = db.userList(userList);
+            //logList = db.logList(logList);
+            //id = IDInput.Text;
+            //pw = PWInput.Password;
+            //for (int i = 0; i < userList.Count; i++)
+            //{
+            //    if (userList[i].UserId == (id))
+            //    {
+            //        if (userList[i].UserPassword == (pw))
+            //        {
+            //            int count = logList.Count;
+            //            Console.Write("        로그인 성공");
+            //            string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+            //            db.LogSave(count + 1, userList[i].UserName, time, action, null);
+            //            pwCheck = true;
+            //            loginUser = userList[i].UserName;
+            //            loginUserName.Text = $"{loginUser}님이 로그인 하셨습니다.";
+            //            usermenu.loginUser.Text = $"{loginUser}님 환영합니다.";                       
+            //        }
+            //        idCheck = true;
+            //    }
+            //}
+
+            //if (!idCheck)
+            //{
+            //    MessageBox.Show("존재하지 않는 회원입니다. 다시 로그인 해주세요.");
+            //    IDInput.Text = "";
+            //    PWInput.Clear();
+            //}
+
+            //else if (!pwCheck)
+            //{
+            //    MessageBox.Show("틀린 비밀번호 입니다. 비밀번호를 다시 입력해주세요.");
+            //    IDInput.Text = "";
+            //    PWInput.Clear();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("로그인 성공");
+
+            //}
+        }
+
+        public string login ()
+        {
             string action = "로그인";
             bool idCheck = false;
             bool pwCheck = false;
@@ -66,7 +114,7 @@ namespace ImageProgram
                         pwCheck = true;
                         loginUser = userList[i].UserName;
                         loginUserName.Text = $"{loginUser}님이 로그인 하셨습니다.";
-                        usermenu.loginUser.Text = $"{loginUser}님 환영합니다.";                       
+                        usermenu.loginUser.Text = $"{loginUser}님 환영합니다.";
                     }
                     idCheck = true;
                 }
@@ -87,9 +135,10 @@ namespace ImageProgram
             }
             else
             {
-                MessageBox.Show("로그인 성공");
-
+                MessageBox.Show("로그인 성공");                
             }
+
+            return loginUser;
         }
 
 
