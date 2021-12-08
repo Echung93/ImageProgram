@@ -142,12 +142,6 @@ namespace ImageProgram
         }
 
 
-        private void Password_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9a-z]");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
         private void Btn_findPassword_Click(object sender, RoutedEventArgs e)
         {
 
@@ -155,14 +149,60 @@ namespace ImageProgram
 
         private void IDInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex(@"^[0-9a-z]+");
+            Regex regex = new Regex("[0-9a-z]+");
             Boolean boolean = regex.IsMatch(e.Text);
 
             if (!boolean)
             {
                 IDInput.Text = "";
             }
-
         }
+
+        private void IDInput_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemMinus || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
+            {
+                e.Handled = true;
+                //e.Handled = false일 때 실행!
+            }
+
+            if (e.Key == Key.Enter || e.Key == Key.Tab)
+            {
+                if (idCheck(IDInput.Text))
+                {
+                    IDInput.Text = IDInput.Text;
+                }
+
+                else
+                {
+                    IDInput.Text = "";
+                }
+            }
+        }
+        private void Password_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9a-z]");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void PWInput_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        public bool idCheck(string id)
+        {
+            Regex regex = new Regex("[^0-9a-z]");
+            Boolean boolean = regex.IsMatch(id);
+            if (!boolean)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

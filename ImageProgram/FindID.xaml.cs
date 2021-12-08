@@ -84,7 +84,7 @@ namespace ImageProgram
 
         private void name_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemMinus || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
             {
                 e.Handled = true;
             }
@@ -107,7 +107,7 @@ namespace ImageProgram
 
         private void registrationNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space)
+            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
             {
                 e.Handled = true;
             }
