@@ -99,6 +99,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddressAlter.xaml.cs">
+      <DependentUpon>AddressAlter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Find.xaml.cs">
       <DependentUpon>Find.xaml</DependentUpon>
     </Compile>
@@ -111,9 +114,25 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModifyUserInformation.xaml.cs">
+      <DependentUpon>ModifyUserInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordAlter.xaml.cs">
+      <DependentUpon>PasswordAlter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PhoneNumberAlter.xaml.cs">
+      <DependentUpon>PhoneNumberAlter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserMenu.xaml.cs">
       <DependentUpon>UserMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewUserInformation.xaml.cs">
+      <DependentUpon>ViewUserInformation.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddressAlter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Find.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,6 +156,18 @@
     <Page Include="MainControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModifyUserInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PasswordAlter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PhoneNumberAlter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegisterPage.xaml">
       <SubType>Designer</SubType>
@@ -182,6 +213,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UserMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewUserInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

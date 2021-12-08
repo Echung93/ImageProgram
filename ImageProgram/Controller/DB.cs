@@ -75,19 +75,25 @@ namespace ImageProgram
             connection.Close();
         }
 
-        public void UserUpdate(string userID, string userPhoneNumber, string userAddress)
+        public void UserUpdate(string userID, string userPhoneNumber, string userAddress, string userPassword)
         {
 
             MySqlConnection connection = new MySqlConnection("Server=localhost;Database=imageProgram;Uid=root;Pwd=0000;");
             connection.Open();
             MySqlCommand command;
-            if (userPhoneNumber == null)
+            if (userAddress != null)
             {
                 command = new MySqlCommand($"UPDATE user SET userAddress = '{userAddress}' WHERE userId = '{userID}'", connection);
             }
+
+            else if (userPhoneNumber != null)
+            {
+                command = new MySqlCommand($"UPDATE user SET userPhoneNumber = '{userPhoneNumber}' WHERE userId = '{userID}'", connection);
+
+            }
             else
             {
-                command = new MySqlCommand($"UPDATE user SET userPhoneNumber = '{"010" + userPhoneNumber}' WHERE userId = '{userID}'", connection);
+                command = new MySqlCommand($"UPDATE user SET userPassword = '{userPassword}' WHERE userId = '{userID}'", connection);
             }
 
             command.ExecuteNonQuery();

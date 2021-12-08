@@ -8,11 +8,11 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid HorizontalAlignment="Center" Height="300" Width="300" >
 
-        <Button Name="userDelete" Content="회원탈퇴" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,50,0,0" Height="40" Click="userDelete_Click"/>
-        <Button Name="userInformationAlter" Content="회원정보수정" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,100,0,0" Height="40" Click="userInformationAlter_Click" />
-        <Button Name="searchImage" Content="이미지 검색" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,150,0,0" Height="40" Click="searchImage_Click" />
+        <Button Name="userDelete" Content="회원탈퇴" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,50,0,0" Height="40" />
+        <Button Name="userInformationAlter" Content="회원정보수정" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,100,0,0" Height="40" />
+        <Button Name="searchImage" Content="이미지 검색" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,150,0,0" Height="40" />
         <TextBlock Name="loginUser" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="50,15,0,0" Width="161"/>
-        <Button Name="logout" Content="로그아웃" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,200,0,0" Height="40" Click="logout_Click"/>
+        <Button Name="logout" Content="로그아웃" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="50,200,0,0" Height="40"/>
 
     </Grid>
 </UserControl>

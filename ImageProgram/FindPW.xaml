@@ -17,7 +17,5 @@
         <Label Content="주민번호" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,22,0,0"/>             
         <TextBlock Name="pw" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,59,0,0" Width="220" Height="36"/>
 
-        
-
     </Grid>
 </UserControl>
