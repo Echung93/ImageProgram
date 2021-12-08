@@ -11,8 +11,8 @@
         <Button x:Name="Btn_findPassword" Content="아이디/비밀번호 찾기" HorizontalAlignment="Center" VerticalAlignment="Top" Width="130" Height="34" Margin="30,170,169,0" Click="Btn_findPassword_Click"/>
         <Button x:Name="Btn_register" Content="회원가입" HorizontalAlignment="Center" VerticalAlignment="Top" Width="95" Height="34" Margin="204,170,33,0" Click="Btn_register_Click"/>
         <TextBlock Name="loginBlock" FontSize="20" HorizontalAlignment="Center" Margin="125,23,106,0" TextWrapping="Wrap" Text="LOGIN" VerticalAlignment="Top" Width="69" Height="27"/>
-        <TextBox x:Name="IDInput" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Margin="32,85,0,0" PreviewTextInput="IDInput_PreviewTextInput"  KeyDown="IDInput_PreviewKeyDown"  />
-        <PasswordBox Name="PWInput" HorizontalAlignment="Left" Height="25"  Margin="32,120,0,0" VerticalAlignment="Top" Width="143" KeyDown="PWInput_PreviewKeyDown"  PreviewTextInput="Password_TextInput"/>
+        <TextBox x:Name="IDInput" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" Margin="32,85,0,0" PreviewKeyDown="IDInput_PreviewKeyDown"  />
+        <PasswordBox Name="PWInput" HorizontalAlignment="Left" Height="25"  Margin="32,120,0,0" VerticalAlignment="Top" Width="143" PreviewKeyDown="PWInput_PreviewKeyDown"/>
         <Label Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,80,0,0"/>
         <Label Content="PW" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,119,0,0"/>
         <TextBlock x:Name="loginUserName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="124,235,0,-27"/>

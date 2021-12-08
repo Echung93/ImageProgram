@@ -92,9 +92,9 @@ namespace ImageProgram
 
         public bool nameCheck1(string name)
         {
-            Regex regex = new Regex("^[가-힣][가-힣][가-힣]$");
+            Regex regex = new Regex("[^가-힣]");
             Boolean boolean = regex.IsMatch(name);
-            if (boolean)
+            if (!boolean)
             {
                 return true;
             }
@@ -112,10 +112,20 @@ namespace ImageProgram
             return false;
         }
 
-        public bool addressCheck(string number)
+        public bool addressCheck(string address)
         {
-            Regex regex = new Regex("^[가-힣0-9-][가-힣0-9-][가-힣0-9-]$");
-            Boolean boolean = regex.IsMatch(number);
+            Regex regex;
+            if (address.Contains("면") || address.Contains("읍") || address.Contains("동"))
+            {
+                regex = new Regex(@"^([가-힣]+)도([가-힣]+)시([가-힣0-9\-]+)(면|동|읍|로|길)([가-힣0-9]+)(로)([가-힣0-9\-]+)$");
+            }
+
+            else
+            {
+                regex = new Regex(@"^([가-힣]+)도([가-힣]+)시([가-힣0-9\-]+)(로|길)([가-힣0-9\-]+)$");
+            }
+            
+            Boolean boolean = regex.IsMatch(address);
             if (boolean)
             {
                 return true;
@@ -136,7 +146,7 @@ namespace ImageProgram
 
         public bool emailCheck(string email)
         {
-            Regex regex = new Regex(@"[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?");
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w]+)((\.(\w){2,3})+)$");          
             Boolean boolean = regex.IsMatch(email);
             if (boolean)
             {
@@ -147,9 +157,9 @@ namespace ImageProgram
 
         public bool idCheck(string id)
         {
-            Regex regex = new Regex("^[0-9a-z][0-9a-z][0-9a-z]$");
+            Regex regex = new Regex("[^0-9a-z]");
             Boolean boolean = regex.IsMatch(id);
-            if (boolean)
+            if (!boolean)
             {
                 return true;
             }
@@ -158,9 +168,10 @@ namespace ImageProgram
 
         public bool pwCheck(string pw)
         {
-            Regex regex = new Regex(@"^[0-9a-z]+");
+            Regex regex = new Regex("[^0-9a-z]+");
             Boolean boolean = regex.IsMatch(pw);
-            if (boolean)
+            Console.WriteLine(boolean);
+            if (!boolean)
             {
                 return true;
             }
@@ -169,11 +180,6 @@ namespace ImageProgram
 
         private void name_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemMinus || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
-            {
-                e.Handled = true;
-            }
-
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
@@ -181,9 +187,9 @@ namespace ImageProgram
 
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (nameCheck1(name.Text))
+                if (nameCheck1(name.Text) && name.Text !="")
                 {
-                    name.Text = name.Text.Replace(" ","");
+                    name.Text = name.Text.Replace(" ", "");
                     name1.Text = "";
                 }
 
@@ -196,20 +202,10 @@ namespace ImageProgram
         }
 
         private void address_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
-            {
-                e.Handled = true;
-            }
-
-            if (e.Key == Key.Space)
-            {
-                e.Handled = true;
-            }
-
+           {
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (addressCheck(address.Text))
+                if (addressCheck(address.Text) && address.Text != "")
                 {
                     address.Text = address.Text;
                     address1.Text = "";
@@ -225,11 +221,6 @@ namespace ImageProgram
 
         private void registrationNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
-            {
-                e.Handled = true;
-            }
-
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
@@ -237,7 +228,7 @@ namespace ImageProgram
 
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (registrationNumberCheck(registrationNumber.Text))
+                if (registrationNumberCheck(registrationNumber.Text) && registrationNumber.Text != "")
                 {
                     registrationNumber.Text = registrationNumber.Text;
                     registrationNumber1.Text = "";
@@ -253,11 +244,6 @@ namespace ImageProgram
 
         private void phoneNumber_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
-            {
-                e.Handled = true;
-            }
-
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
@@ -265,7 +251,7 @@ namespace ImageProgram
 
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (phoneNumberCheck(phoneNumber.Text))
+                if (phoneNumberCheck(phoneNumber.Text) && phoneNumber.Text != "")
                 {
                     phoneNumber.Text = phoneNumber.Text;
                     phoneNumber1.Text = "";
@@ -281,11 +267,6 @@ namespace ImageProgram
 
         private void email_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemMinus || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
-            {
-                e.Handled = true;
-            }
-
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
@@ -293,7 +274,7 @@ namespace ImageProgram
 
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (emailCheck(email.Text))
+                if (emailCheck(email.Text) && email.Text != "")
                 {
                     email.Text = email.Text;
                     email1.Text = "";
@@ -309,11 +290,6 @@ namespace ImageProgram
 
         private void id_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space || e.Key == Key.OemSemicolon || e.Key == Key.OemPeriod || e.Key == Key.OemMinus || e.Key == Key.OemQuestion || e.Key == Key.OemQuotes || e.Key == Key.OemPlus || e.Key == Key.OemCloseBrackets || e.Key == Key.OemOpenBrackets || e.Key == Key.OemComma || e.Key == Key.OemTilde)
-            {
-                e.Handled = true;
-            }
-
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
@@ -321,7 +297,7 @@ namespace ImageProgram
 
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (idCheck(id.Text))
+                if (idCheck(id.Text) && id.Text != "")
                 {
                     id.Text = id.Text;
                     id1.Text = id.Text;
@@ -344,7 +320,7 @@ namespace ImageProgram
 
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (pwCheck(pw.Text))
+                if (pwCheck(pw.Text) && pw.Text != "")
                 {
                     pw1.Text = pw.Text;
                 }
@@ -354,83 +330,6 @@ namespace ImageProgram
                     pw1.Text = "비밀번호를 제대로 입력해주세요.";
                     pw.Text = "";
                 }
-            }
-        }
-
-        private void name_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[가-힣]");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (boolean)
-            {
-                name.Text = "";
-            }
-        }
-
-        private void registrationNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"^[0-9-]+");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (!boolean)
-            {
-                registrationNumber.Text = "";
-            }
-        }
-
-        private void address_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[가-힣0-9-]");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (!boolean)
-            {
-                address.Text = "";
-            }
-        }
-
-        private void phoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"^[0-9-]+");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (!boolean)
-            {
-                phoneNumber.Text = "";
-            }
-        }
-
-        private void email_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"^[a-z0-9@.]+");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (!boolean)
-            {
-                email.Text = "";
-            }
-        }
-
-        private void id_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[0-9a-z]+");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (!boolean)
-            {
-                id.Text = "";
-            }
-        }
-
-        private void pw_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex(@"^[0-9a-z]+");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (!boolean)
-            {
-                pw.Text = "";
             }
         }
     }
