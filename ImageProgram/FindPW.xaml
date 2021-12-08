@@ -7,9 +7,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBox x:Name="userID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,-50,0,0" KeyDown="id_KeyDown"/>
-        <TextBox Name="name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,-13,0,0" KeyDown="name_KeyDown"/>
-        <TextBox x:Name="registrationNumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,25,0,0" KeyDown="registrationNumber_KeyDown"/>        
+        <TextBox x:Name="userID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,-50,0,0" PreviewKeyDown="id_KeyDown"/>
+        <TextBox Name="name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,-13,0,0" PreviewKeyDown="name_KeyDown"/>
+        <TextBox x:Name="registrationNumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,25,0,0" PreviewKeyDown="registrationNumber_KeyDown"/>        
         <Button Name="findPW" Content="비밀번호 찾기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="0,105,0,-45" Height="40" Click="findPW_Click"/>
         <Button Name="Btn_back" Content="뒤로 가기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="0,150,0,-90" Height="40" Click="Btn_back_Click"/>
         <Label Content="아이디" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-50,0,0"/>

@@ -90,71 +90,9 @@ namespace ImageProgram
 
         }
 
-        //private void registrationNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex(@"^[0-9][0-9][01][0-9][0123][0-9]-[1234][0-9]{6}");
-        //    e.Handled = regex.IsMatch(e.Text);
-        //}
-
-        //private void address_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex(@"^[0-9a-z]+");
-        //    Boolean boolean = regex.IsMatch(e.Text);
-
-        //    if (!boolean)
-        //    {
-        //        address.Text = "";
-        //    }
-
-        //}
-
-        //private void phoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex(@"010-[0-9]{4}-[0-9]{4}$");
-        //    e.Handled = regex.IsMatch(e.Text);
-        //}
-
-        //private void email_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex(@"^[0-9a-z@-.]+");
-        //    Boolean boolean = regex.IsMatch(e.Text);
-
-        //    if (!boolean)
-        //    {
-        //        email.Text = "";
-        //    }
-
-        //}
-
-        //private void id_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex(@"^[0-9a-z]+");
-        //    e.Handled = regex.IsMatch(e.Text);
-
-        //}
-
-        //private void pw_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        //{
-        //    Regex regex = new Regex(@"^[0-9a-z]+");
-        //    e.Handled = regex.IsMatch(e.Text);
-
-        //}
-
-        //private void name_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    if (nameCheck1(name.Text) && name.Text.Length < 6)  //8:백스페이스
-        //    {
-        //        e.Handled = true;
-        //    }
-        //    else
-        //    {
-        //        e.Handled = false;
-        //    }
-        //}
-
         public bool nameCheck1(string name)
         {
-            Regex regex = new Regex(@"^[가-힣]{2,5}");
+            Regex regex = new Regex("^[가-힣][가-힣][가-힣]$");
             Boolean boolean = regex.IsMatch(name);
             if (boolean)
             {
@@ -209,7 +147,7 @@ namespace ImageProgram
 
         public bool idCheck(string id)
         {
-            Regex regex = new Regex(@"^[0-9a-z]+");
+            Regex regex = new Regex("?[0-9a-z]+");
             Boolean boolean = regex.IsMatch(id);
             if (boolean)
             {
@@ -231,6 +169,11 @@ namespace ImageProgram
 
         private void name_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (nameCheck1(name.Text))
@@ -249,6 +192,11 @@ namespace ImageProgram
 
         private void address_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (addressCheck(address.Text))
@@ -267,6 +215,11 @@ namespace ImageProgram
 
         private void registrationNumber_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (registrationNumberCheck(registrationNumber.Text))
@@ -283,9 +236,13 @@ namespace ImageProgram
             }
         }
 
-
         private void phoneNumber_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (phoneNumberCheck(phoneNumber.Text))
@@ -304,6 +261,11 @@ namespace ImageProgram
 
         private void email_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (emailCheck(email.Text))
@@ -322,6 +284,11 @@ namespace ImageProgram
 
         private void id_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (idCheck(id.Text))
@@ -340,12 +307,16 @@ namespace ImageProgram
 
         private void pw_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (pwCheck(pw.Text))
                 {
-                    pw.Text = pw.Text;
-                    pw1.Text = "";
+                    pw1.Text = pw.Text;
                 }
 
                 else
@@ -353,6 +324,83 @@ namespace ImageProgram
                     pw1.Text = "비밀번호를 제대로 입력해주세요.";
                     pw.Text = "";
                 }
+            }
+        }
+
+        private void name_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[가-힣]");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (boolean)
+            {
+                name.Text = "";
+            }
+        }
+
+        private void registrationNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[0-9-]+");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (!boolean)
+            {
+                registrationNumber.Text = "";
+            }
+        }
+
+        private void address_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"http://([\w]+\.)+[\w-]+(/[\w-./?])}");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (!boolean)
+            {
+                address.Text = "";
+            }
+        }
+
+        private void phoneNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"010-[0-9]{4}-[0-9]{4}$");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (!boolean)
+            {
+                phoneNumber.Text = "";
+            }
+        }
+
+        private void email_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (!boolean)
+            {
+                email.Text = "";
+            }
+        }
+
+        private void id_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[0-9a-z]+");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (!boolean)
+            {
+                id.Text = "";
+            }
+        }
+
+        private void pw_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[0-9a-z]+");
+            Boolean boolean = regex.IsMatch(e.Text);
+
+            if (!boolean)
+            {
+                pw.Text = "";
             }
         }
     }

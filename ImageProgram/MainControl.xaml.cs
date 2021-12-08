@@ -142,12 +142,6 @@ namespace ImageProgram
         }
 
 
-        private void Password_TextInput(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9a-z]");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
         private void Btn_findPassword_Click(object sender, RoutedEventArgs e)
         {
 
@@ -155,14 +149,30 @@ namespace ImageProgram
 
         private void IDInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex(@"^[0-9a-z]+");
-            Boolean boolean = regex.IsMatch(e.Text);
-
-            if (!boolean)
-            {
-                IDInput.Text = "";
-            }
-
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
+
+        private void IDInput_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+        private void Password_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9a-z]");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void PWInput_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

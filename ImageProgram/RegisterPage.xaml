@@ -29,25 +29,25 @@
         <Label
             VerticalAlignment="Top" Margin="15,370,0,0" HorizontalAlignment="Left" Content="비밀번호" RenderTransformOrigin="0.483,0.577"/>
 
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" MaxLength="5" VerticalAlignment="Top" Width="190" Margin="80,70,0,0" KeyDown="name_KeyDown"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" MaxLength="5" VerticalAlignment="Top" Width="190" Margin="80,70,0,0" PreviewTextInput="name_PreviewTextInput" KeyDown="name_KeyDown"/>
         <TextBlock x:Name ="name1" HorizontalAlignment="Left" Text="이름을 입력해주세요." TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,100,0,0" Width="180"/>
 
-        <TextBox x:Name="registrationNumber"  HorizontalAlignment="Left" Height="23" MaxLength="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,120,0,0" KeyDown="registrationNumber_KeyDown"/>
+        <TextBox x:Name="registrationNumber"  HorizontalAlignment="Left" Height="23" MaxLength="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,120,0,0" PreviewTextInput="registrationNumber_PreviewTextInput" KeyDown="registrationNumber_KeyDown"/>
         <TextBlock x:Name ="registrationNumber1" HorizontalAlignment="Left" FontSize="10" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,150,0,0" Width="210"><Run Text="주민번호를 입력해주세요.(' - '포함)"/></TextBlock>
 
-        <TextBox x:Name="address"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,170,0,0" KeyDown="address_KeyDown"/>
+        <TextBox x:Name="address"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,170,0,0" PreviewTextInput="address_PreviewTextInput"  KeyDown="address_KeyDown"/>
         <TextBlock x:Name ="address1" HorizontalAlignment="Left" Text="주소를 입력해주세요." TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,200,0,0" Width="180"/>
 
-        <TextBox x:Name="phoneNumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,220,0,0" KeyDown="phoneNumber_KeyDown"/>
+        <TextBox x:Name="phoneNumber" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,220,0,0" PreviewTextInput="phoneNumber_PreviewTextInput"  KeyDown="phoneNumber_KeyDown"/>
         <TextBlock x:Name ="phoneNumber1" HorizontalAlignment="Left" FontSize="10" Text="핸드폰 번호를 입력해주세요.(' - '포함)" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,250,0,0" Width="210"/>
 
-        <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,270,0,0" KeyDown="email_KeyDown"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,270,0,0" PreviewTextInput="email_PreviewTextInput"  KeyDown="email_KeyDown"/>
         <TextBlock x:Name ="email1" HorizontalAlignment="Left" Text="이메일을 입력해주세요." TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,300,0,0" Width="180"/>
 
-        <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,320,0,0" KeyDown="id_KeyDown"/>
+        <TextBox x:Name="id" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,320,0,0" PreviewTextInput="id_PreviewTextInput"  KeyDown="id_KeyDown"/>
         <TextBlock x:Name ="id1" HorizontalAlignment="Left" Text="아이디를 입력해주세요." TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,350,0,0" Width="180"/>
 
-        <TextBox x:Name="pw" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,370,0,0" KeyDown="pw_KeyDown"/>
+        <TextBox x:Name="pw" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,370,0,0" PreviewTextInput="pw_PreviewTextInput"  KeyDown="pw_KeyDown"/>
         <TextBlock x:Name ="pw1" HorizontalAlignment="Left" Text="패스워드를 입력해주세요." TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,400,0,0" Width="180"/>
 
         <Button Content="회원 가입" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="115,435,0,0" Height="30" Click="Button_Click"/>
