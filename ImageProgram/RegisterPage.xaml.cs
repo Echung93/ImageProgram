@@ -23,6 +23,10 @@ namespace ImageProgram
     {
         DB db = new DB();
         List<User> userList = new List<User>();
+        public bool nameCheck1 = false;
+        public bool phoneNumberCheck1 = false;
+        public bool registrationNumberCheck1 = false;
+        public bool idCheck1 = false;
 
         public RegisterPage()
         {
@@ -31,66 +35,68 @@ namespace ImageProgram
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            userList = db.userList(userList);
-            bool nameCheck = true;
-            bool phoneNumberCheck = true;
-            bool registrationNumberCheck = true;
-            bool emailCheck = true;
-            bool idCheck = true;
-
-            for (int i = 0; i < userList.Count; i++)
+            if (name.Text == "")
             {
-                if (userList[i].UserName == name.Text)
-                {
-                    nameCheck = false;
-                }
-
-                if (userList[i].UserPhoneNumber == phoneNumber.Text)
-                    phoneNumberCheck = false;
-
-                if (userList[i].UserRegistrationNumber == registrationNumber.Text)
-                    registrationNumberCheck = false;
-
-                if (userList[i].UserEmail == email.Text)
-                    emailCheck = false;
-
-                if (userList[i].UserId == id.Text)
-                    idCheck = false;
+                MessageBox.Show("이름을 입력해주세요!");
             }
 
-            if (!nameCheck)
+            else if (registrationNumber.Text == "")
             {
-                MessageBox.Show("등록된 회원 입니다.");
+                MessageBox.Show("주민번호를 입력해주세요!");
             }
 
-            else if (!phoneNumberCheck)
+            else if (address.Text == "")
             {
-                MessageBox.Show("등록된 핸드폰 번호 입니다.");
+                MessageBox.Show("주소를 입력해주세요!");
             }
 
-            else if (!registrationNumberCheck)
+            else if (phoneNumber.Text == "")
             {
-                MessageBox.Show("등록된 주민번호 입니다.");
+                MessageBox.Show("전화번호를 입력해주세요!");
             }
 
-            else if (!emailCheck)
+            else if (email.Text == "")
             {
-                MessageBox.Show("등록된 이메일 입니다.");
+                MessageBox.Show("이메일을 입력해주세요!");
             }
 
-            else if (!idCheck)
+            else if (id.Text == "")
             {
-                MessageBox.Show("등록된 아이디 입니다.");
+                MessageBox.Show("아이디를 입력해주세요!");
+            }
+
+            else if (pw.Text == "")
+            {
+                MessageBox.Show("비밀번호를 입력해주세요!");
+            }
+            
+            else if (!nameCheck1)
+            {
+                MessageBox.Show("이름 중복 확인을 해주세요.");
+            }
+
+            else if (!registrationNumberCheck1)
+            {
+                MessageBox.Show("주민번호 중복 확인을 해주세요.");
+            }
+
+            else if (!phoneNumberCheck1)
+            {
+                MessageBox.Show("전화번호 중복 확인을 해주세요.!");
+            }
+
+            else if (!idCheck1)
+            {
+                MessageBox.Show("아이디 중복 확인을 해주세요.");
             }
 
             else
             {
                 MessageBox.Show("회원가입 완료!");
             }
-
         }
 
-        public bool nameCheck1(string name)
+        public bool nameCheck(string name)
         {
             Regex regex = new Regex("[^가-힣]");
             Boolean boolean = regex.IsMatch(name);
@@ -124,7 +130,7 @@ namespace ImageProgram
             {
                 regex = new Regex(@"^([가-힣]+)도([가-힣]+)시([가-힣0-9\-]+)(로|길)([가-힣0-9\-]+)$");
             }
-            
+
             Boolean boolean = regex.IsMatch(address);
             if (boolean)
             {
@@ -146,7 +152,7 @@ namespace ImageProgram
 
         public bool emailCheck(string email)
         {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w]+)((\.(\w){2,3})+)$");          
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w]+)((\.(\w){2,3})+)$");
             Boolean boolean = regex.IsMatch(email);
             if (boolean)
             {
@@ -187,7 +193,7 @@ namespace ImageProgram
 
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
-                if (nameCheck1(name.Text) && name.Text !="")
+                if (nameCheck(name.Text) && name.Text != "")
                 {
                     name.Text = name.Text.Replace(" ", "");
                     name1.Text = "";
@@ -202,7 +208,7 @@ namespace ImageProgram
         }
 
         private void address_KeyDown(object sender, KeyEventArgs e)
-           {
+        {
             if (e.Key == Key.Enter || e.Key == Key.Tab)
             {
                 if (addressCheck(address.Text) && address.Text != "")
@@ -331,6 +337,165 @@ namespace ImageProgram
                     pw.Text = "";
                 }
             }
+        }
+
+        private void name_rnCheck_Button_Click(object sender, RoutedEventArgs e)
+        {
+            userList = db.userList(userList);
+            nameCheck1 = true;
+            registrationNumberCheck1 = true;
+
+            foreach (User user in userList)
+            {
+                if (user.UserRegistrationNumber == registrationNumber.Text)
+                {
+                    registrationNumberCheck1 = false;
+                    if (user.UserName == name.Text)
+                    {
+                        nameCheck1 = false;
+
+                    }
+                }
+            }
+
+            if (!registrationNumberCheck1)
+            {
+                MessageBox.Show("이미 가입된 주민번호입니다.");
+                registrationNumber1.Text = "이미 가입된 주민번호입니다.";
+                registrationNumber.Text = "";
+            }
+
+            else if (nameCheck1)
+            {
+                if (name.Text == "")
+                {
+                    MessageBox.Show("이름을 입력해주세요.");
+                    nameCheck1 = false;
+                }
+
+                else if (registrationNumberCheck1)
+                {
+                    if (registrationNumber.Text == "")
+                    {
+                        MessageBox.Show("주민번호를 입력해주세요.");
+                        registrationNumberCheck1 = false;
+                    }
+                }
+
+            }
+
+
+
+            else if (!nameCheck1 && !registrationNumberCheck1)
+            {
+                MessageBox.Show("이미 등록된 회원입니다.");
+                name.Text = "";
+                nameCheck1 = true;
+                registrationNumberCheck1 = true;
+            }
+
+            if (nameCheck1 && registrationNumberCheck1)
+            {
+                MessageBox.Show("회원 가입이 가능합니다.");
+                registrationNumber1.Text = "회원 가입이 가능합니다.";
+            }
+
+        }
+
+        private void pnCheck_Button_Click(object sender, RoutedEventArgs e)
+        {
+            userList = db.userList(userList);
+            foreach (User user in userList)
+            {
+                if (user.UserPhoneNumber == phoneNumber.Text)
+                {
+                    phoneNumberCheck1 = false;
+                }
+            }
+
+            if (phoneNumberCheck1)
+            {
+                if (phoneNumber.Text == "")
+                {
+                    MessageBox.Show("전화번호를 입력해주세요.");
+                    phoneNumberCheck1 = true;
+                }
+
+                else
+                {
+                    MessageBox.Show("전화번호 인증 완료");
+                    phoneNumber1.Text = "전화번호 인증 완료";
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("이미 가입된 전화번호 입니다.");
+                phoneNumber1.Text = "이미 가입된 전화번호 입니다.";
+                phoneNumber.Text = "";
+                phoneNumberCheck1 = true;
+            }
+        }
+
+        private void idCheck_Button_Click(object sender, RoutedEventArgs e)
+        {
+            idCheck1 = true;
+            userList = db.userList(userList);
+            foreach (User user in userList)
+            {
+                if (user.UserId == id.Text)
+                {
+                    idCheck1 = false;
+                }
+            }
+
+            if (idCheck1)
+            {
+                if (id.Text == "")
+                {
+                    MessageBox.Show("아이디를 입력해주세요.");
+                    idCheck1 = true;
+                }
+
+                else
+                {
+                    MessageBox.Show("사용 가능한 아이디 입니다.");
+                    id1.Text = "사용 가능한 아이디 입니다.";
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("이미 가입된 아이디 입니다.");
+                id1.Text = "이미 가입된 아이디 입니다.";
+                id.Text = "";
+                idCheck1 = true;
+            }
+
+        }
+
+        private void Btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            name.Text = "";
+            name1.Text = "이름을 입력해주세요.";
+
+            registrationNumber.Text = "";
+            registrationNumber1.Text = "주민번호를 입력해주세요.(' - '포함)";
+
+            address.Text = "";
+            address1.Text = "주소를 입력해주세요.";
+
+            phoneNumber.Text = "";
+            phoneNumber1.Text = "핸드폰 번호를 입력해주세요.(' - '포함)";
+
+            email.Text = "";
+            email1.Text = "이메일을 입력해주세요.";
+
+            id.Text = "";
+            id1.Text = "아이디를 입력해주세요.";
+
+            pw.Text = "";
+            pw1.Text = "패스워드를 입력해주세요.";
         }
     }
 }
