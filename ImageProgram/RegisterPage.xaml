@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ImageProgram"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="300">
-    <Grid HorizontalAlignment="Left" Height="500" Width="305" Margin="0,0,-5,0">
+    <Grid HorizontalAlignment="Center" Height="500" Width="300" Margin="0,0,-5,0">
         <Button x:Name="Btn_back" Content="뒤로가기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="71" Height="20" Margin="19,10,0,0" RenderTransformOrigin="0.217,0.465" Click="Btn_back_Click"/>
 
         <Label Content="회원 가입" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,5,0,0"/>
@@ -35,8 +35,8 @@
         <TextBlock x:Name ="name1" HorizontalAlignment="Left" Text="이름을 입력해주세요." TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,67,0,0" Width="180"/>
 
         <TextBox x:Name="registrationNumber"  HorizontalAlignment="Left" Height="23" MaxLength="14" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,87,0,0" PreviewKeyDown="registrationNumber_KeyDown"/>
-        <TextBlock x:Name ="registrationNumber1" HorizontalAlignment="Left" FontSize="10" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,117,0,0" Width="210"><Run Text="주민번호를 입력해주세요.(' - '포함)"/></TextBlock>
-       
+        <TextBlock x:Name ="registrationNumber1" HorizontalAlignment="Left" Text="주민번호를 입력해주세요.(' - '포함)" FontSize="10" TextWrapping="Wrap" VerticalAlignment="Top" Margin="80,117,0,0" Width="210"/>
+
         <Button Name="name_rnCheck" Content="이름/주민번호 중복 확인" VerticalAlignment="Center" Margin="80,137,35,340" Height="23" Click="name_rnCheck_Button_Click"/>
         
         <TextBox x:Name="address"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="80,170,0,0" PreviewKeyDown="address_KeyDown"/>

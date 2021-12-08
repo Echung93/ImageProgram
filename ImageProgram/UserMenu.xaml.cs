@@ -20,11 +20,33 @@ namespace ImageProgram
     /// </summary>
     public partial class UserMenu : UserControl
     {
-       
-       
+        MainControl mainControl = new MainControl();
+
         public UserMenu()
         {
             InitializeComponent();
+            int num = mainControl.loginUserName.Text.IndexOf("님");
+            loginUser.Text = mainControl.loginUserName.Text.Substring(0, num);
+        }
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void userDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void userInformationAlter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void searchImage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

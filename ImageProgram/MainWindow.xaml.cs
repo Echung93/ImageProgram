@@ -29,6 +29,7 @@ namespace ImageProgram
         Find find = new Find();
         FindID findID = new FindID();
         FindPW findPW = new FindPW();
+        Window loginWin;
 
         public static string name;
         //Window testWin;
@@ -75,13 +76,21 @@ namespace ImageProgram
         {
             MainGrid.Children.Clear();
             name = mainControl.login();
+            
+
             if (name != null)
             {
+                loginWin = new LoginWindow();
+                loginWin.Owner = this;
+                loginWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
                 int num = mainControl.loginUserName.Text.IndexOf("님");
                 name = mainControl.loginUserName.Text.Substring(0,num);
                 userMenu.loginUser.Text = $"{name}님 환영합니다.";
-                MainGrid.Children.Clear();                
-                MainGrid.Children.Add(userMenu);
+                this.Hide();
+                loginWin.ShowDialog();
+                this.Show();
+                MainGrid.Children.Add(mainControl);
             }
 
             else
