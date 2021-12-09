@@ -120,8 +120,8 @@ namespace ImageProgram
                     {
                         int count = logList.Count;
                         Console.Write("        로그인 성공");
-                        string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                        db.LogSave(count + 1, userList[i].UserName, time, action, null);
+                        //string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+                        //db.LogSave(count + 1, userList[i].UserName, time, action, null);
                         pwCheck = true;
                         loginUser = userList[i].UserName;
                         loginUserID = userList[i].UserId;
@@ -136,6 +136,8 @@ namespace ImageProgram
             {
                 MessageBox.Show("존재하지 않는 회원입니다. 다시 로그인 해주세요.");
                 IDInput.Text = "";
+                loginUser = "";
+                loginUserID = "";
                 PWInput.Clear();
             }
 
@@ -143,6 +145,8 @@ namespace ImageProgram
             {
                 MessageBox.Show("틀린 비밀번호 입니다. 비밀번호를 다시 입력해주세요.");
                 IDInput.Text = "";
+                loginUser = "";
+                loginUserID = "";
                 PWInput.Clear();
             }
             else

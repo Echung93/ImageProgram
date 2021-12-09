@@ -23,7 +23,6 @@ namespace ImageProgram
     public partial class MainWindow : Window
     {
         MainControl mainControl = new MainControl();
-        UserControl1 userControl1 = new UserControl1();
         RegisterPage registerPage = new RegisterPage();
         UserMenu userMenu = new UserMenu();
         Find find = new Find();
@@ -42,7 +41,6 @@ namespace ImageProgram
             mainControl.Btn_login.Click += Btn_login_Click;
             mainControl.Btn_register.Click += Btn_register_Click;
             mainControl.Btn_findPassword.Click += Btn_findPassword_Click;
-            userControl1.Btn_back.Click += Btn_back_Click;
             registerPage.Btn_back.Click += Btn_back_Click;
             find.Btn_back.Click += Btn_back_Click;
             find.Btn_findID.Click += Btn_findID_Click;
@@ -78,7 +76,7 @@ namespace ImageProgram
             name = mainControl.Login();
             userMenu.loginUser.Text = $"{name}님 환영합니다.";
 
-            if (name != null)
+            if (name != "")
             {
                 loginWin = new LoginWindow();
                 loginWin.Owner = this;
@@ -115,20 +113,5 @@ namespace ImageProgram
             MainGrid.Children.Clear();
             MainGrid.Children.Add(findPW);
         }
-
-        //public void Btn_findPassword_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainGrid.Children.Clear();
-        //    MainGrid.Children.Add(find);
-        //}
-
-        //public void Btn_findPassword_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainGrid.Children.Clear();
-        //    MainGrid.Children.Add(find);
-        //}
-
-
-
     }
 }

@@ -102,6 +102,7 @@
     <Compile Include="AddressAlter.xaml.cs">
       <DependentUpon>AddressAlter.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ImageVO.cs" />
     <Compile Include="DeleteUser.xaml.cs">
       <DependentUpon>DeleteUser.xaml</DependentUpon>
     </Compile>
@@ -125,6 +126,12 @@
     </Compile>
     <Compile Include="PhoneNumberAlter.xaml.cs">
       <DependentUpon>PhoneNumberAlter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RecentSearchList.xaml.cs">
+      <DependentUpon>RecentSearchList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SearchImage.xaml.cs">
+      <DependentUpon>SearchImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserMenu.xaml.cs">
       <DependentUpon>UserMenu.xaml</DependentUpon>
@@ -152,10 +159,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ImageItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,13 +179,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RecentSearchList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControl1.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="SearchImage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TestWin.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -194,9 +201,6 @@
     </Page>
     <Compile Include="Controller\API.cs" />
     <Compile Include="Controller\DB.cs" />
-    <Compile Include="ImageItem.xaml.cs">
-      <DependentUpon>ImageItem.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainControl.xaml.cs">
       <DependentUpon>MainControl.xaml</DependentUpon>
     </Compile>
@@ -204,9 +208,6 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestWin.xaml.cs">
       <DependentUpon>TestWin.xaml</DependentUpon>

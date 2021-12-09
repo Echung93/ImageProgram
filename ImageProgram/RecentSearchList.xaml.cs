@@ -16,13 +16,20 @@ using System.Windows.Shapes;
 namespace ImageProgram
 {
     /// <summary>
-    /// UserControl1.xaml에 대한 상호 작용 논리
+    /// RecentSearchList.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class UserControl1 : UserControl
+    public partial class RecentSearchList : UserControl
     {
-        public UserControl1()
+        public RecentSearchList()
         {
             InitializeComponent();
+        }
+
+        private void delete_Click(object sender, RoutedEventArgs e)
+        {
+            DB db = new DB();
+            db.searchListDelete();
+            MessageBox.Show("기록 삭제 완료");
         }
     }
 }

@@ -48,7 +48,6 @@ namespace ImageProgram
             while (rdr.Read())
             {
                 Log log = new Log();
-                log.Id = rdr["id"].ToString();
                 log.Time = rdr["time"].ToString();
                 log.UserName = rdr["userName"].ToString();
                 log.Action = rdr["action"].ToString();
@@ -100,13 +99,22 @@ namespace ImageProgram
             connection.Close();
         }
 
-        public void LogSave(int id, string timne, string userName, string action, string searchName)
+        public void LogSave(string userName, string time, string action, string searchName)
         {
             MySqlConnection connection = new MySqlConnection("Server=localhost;Database=imageProgram;Uid=root;Pwd=0000;");
             connection.Open();
-            string logoString = $"VALUES('{id}','{timne}', '{userName}','{action}', '{searchName}')";
-            MySqlCommand command = new MySqlCommand("INSERT INTO imageProgram.log (id,time,userName,action,searchName)"
+            string logoString = $"VALUES('{userName}', '{time}','{action}', '{searchName}')";
+            MySqlCommand command = new MySqlCommand("INSERT INTO imageProgram.log (userName,time,action,searchName)"
                 + logoString, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public void LogDelete(string searchName)
+        {
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=imageProgram;Uid=root;Pwd=0000;");
+            connection.Open();
+            MySqlCommand command = new MySqlCommand($"DELETE FROM log WHERE searchName = + '{searchName}'", connection);
             command.ExecuteNonQuery();
             connection.Close();
         }
@@ -121,28 +129,13 @@ namespace ImageProgram
             connection.Close();
         }
 
-        //    public List<LogHistoryVO> logList(List<LogHistoryVO> list)
-        //    {
-        //        List<LogHistoryVO> logList = new List<LogHistoryVO>();
-        //        MySqlConnection connection = new MySqlConnection("Server=localhost;Database=imageProgram;Uid=root;Pwd=0000;");
-        //        connection.Open();
-        //        MySqlCommand command = new MySqlCommand("SELECT *FROM logo ", connection);
-        //        MySqlDataReader rdr = command.ExecuteReader();
-
-        //        while (rdr.Read())
-        //        {
-        //            LogHistoryVO logHistoryVO = new LogHistoryVO();
-        //            logHistoryVO.UserName = rdr["userName"].ToString();
-        //            logHistoryVO.BookName = rdr["bookName"].ToString();
-        //            logHistoryVO.Time = rdr["time"].ToString();
-        //            logHistoryVO.Action = rdr["action"].ToString();
-        //            logList.Add(logHistoryVO);
-        //        }
-
-        //        rdr.Close();
-        //        connection.Close();
-        //        return logList;
-        //    }
-
+        public void searchListDelete()
+        {
+            MySqlConnection connection = new MySqlConnection("Server=localhost;Database=imageProgram;Uid=root;Pwd=0000;");
+            connection.Open();
+            MySqlCommand command = new MySqlCommand($"TRUNCATE log", connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
