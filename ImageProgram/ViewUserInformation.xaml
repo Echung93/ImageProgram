@@ -7,14 +7,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Name="findID" Content="아이디찾기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="0,75,0,-15" Height="40" />
-        <Button Name="findPW" Content="비밀번호 찾기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="105" Margin="115,75,0,-15" Height="40"/>
-        <Button Name="Btn_back" Content="뒤로 가기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="0,135,0,-75" Height="40"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="Btn_back" Content="뒤로 가기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Margin="0,104,0,-75" Height="40" Grid.ColumnSpan="2"/>
         <Label Content="이름" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-50,0,0"/>
-        <Label Content="주민번호" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-16,0,0"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" MaxLength="5" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,-50,0,0" />
-        <TextBox Name="registrationNumber" HorizontalAlignment="Left" MaxLength="14" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160" Margin="60,-13,0,0" />
-        <TextBlock Name="id" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,29,0,0" Width="220" Height="36"/>
+        <TextBlock Name="name" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="36,-45,0,0" Width="160" Height="25" Grid.Column="1"/>
+        <Label Content="주민번호" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,-25,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="registrationNumber" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="36,-20,0,0" Width="160" Height="25" Grid.Column="1"/>
+        <Label Content="주소" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
+        <TextBlock x:Name="address" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="36,5,0,0" Width="160" Height="25" Grid.Column="1"/>
+        <Label Content="전화번호" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,25,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="phoneNumber" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="37,30,0,0" Width="160" Height="25" Grid.Column="1"/>
+        <Label Content="이메일" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,50,0,0" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="email" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="37,55,0,-11" Width="160" Height="25" Grid.Column="1"/>
+
+
 
     </Grid>
 </UserControl>

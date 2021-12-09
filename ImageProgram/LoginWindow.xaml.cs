@@ -26,7 +26,10 @@ namespace ImageProgram
         PhoneNumberAlter phoneNumberAlter = new PhoneNumberAlter();
         ViewUserInformation viewUserInformation = new ViewUserInformation();
         ModifyUserInformation modifyUserInformation = new ModifyUserInformation();
-       
+        DeleteUser deleteUser = new DeleteUser();
+        DB db = new DB();
+        List<User> userList = new List<User>();
+
         public static string loginID;
         public static string currentUser;
 
@@ -45,6 +48,7 @@ namespace ImageProgram
             passwordAlter.Btn_back.Click += Btn_back_Click1;
             phoneNumberAlter.Btn_back.Click += Btn_back_Click1;
             viewUserInformation.Btn_back.Click += Btn_back_Click1;
+            deleteUser.Btn_back.Click += Btn_back_Click;
             userMenu.logout.Click += Btn_logout_Click;
             userMenu.userDelete.Click += Btn_userDelete_Click;
             userMenu.userInformationAlter.Click += Btn_userInformationAlter_Click;
@@ -66,7 +70,7 @@ namespace ImageProgram
         public void Btn_userDelete_Click(object sender, RoutedEventArgs e)
         {
             loginGrid.Children.Clear();
-            loginGrid.Children.Add(userMenu);
+            loginGrid.Children.Add(deleteUser);
         }
 
         public void Btn_userInformationAlter_Click(object sender, RoutedEventArgs e)
@@ -96,6 +100,18 @@ namespace ImageProgram
         public void Btn_userInformation_Click(object sender, RoutedEventArgs e)
         {
             loginGrid.Children.Clear();
+            userList = db.userList(userList);
+            foreach (User user in userList)
+            {
+                if (user.UserId == loginID)
+                {
+                    viewUserInformation.name.Text = user.UserName;
+                    viewUserInformation.registrationNumber.Text = user.UserRegistrationNumber;
+                    viewUserInformation.address.Text = user.UserAddress;
+                    viewUserInformation.phoneNumber.Text = user.UserPhoneNumber;
+                    viewUserInformation.email.Text = user.UserEmail;
+                }
+            }
             loginGrid.Children.Add(viewUserInformation);
         }
 

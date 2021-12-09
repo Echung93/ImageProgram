@@ -17,17 +17,16 @@ using System.Text.RegularExpressions;
 namespace ImageProgram
 {
     /// <summary>
-    /// PasswordAlter.xaml에 대한 상호 작용 논리
+    /// DeleteUser.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class PasswordAlter : UserControl
+    public partial class DeleteUser : UserControl
     {
         DB db = new DB();
-        List<User> userList;
-        string userId;
         bool passwordCheck1 = false;
-        
+        string userId;
+        List<User> userList = new List<User>();
 
-        public PasswordAlter()
+        public DeleteUser()
         {
             InitializeComponent();
         }
@@ -67,7 +66,7 @@ namespace ImageProgram
             return false;
         }
 
-        private void alter_Click(object sender, RoutedEventArgs e)
+        private void delete_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow loginWindow = new LoginWindow();
             userId = loginWindow.CurrentUserID();
@@ -78,28 +77,33 @@ namespace ImageProgram
                 {
                     if (User.UserPassword == password.Text)
                     {
-                        MessageBox.Show("기존의 비밀번호와 같은 비밀번호 입니다. \r\n비밀번호를 다시 입력해주세요.");
+                        MessageBox.Show($"{User.UserName}님이 회원탈퇴되었습니다.");
+                        db.UserDelete(userId);
+                        userList = db.userList(userList);
+                        passwordCheck1 = false;
+                        Window.GetWindow(this).Close();
+                        //MainWindow mainWindow = new MainWindow();
+                        //loginWindow.Close();
+
                     }
 
                     else
                     {
-                        MessageBox.Show($"{password.Text}로 비밀번호를 변경하였습니다.");
-                        db.UserUpdate(userId, null, null, password.Text);
-                        userList = db.userList(userList);
-                        passwordCheck1 = false;
+                        MessageBox.Show("비밀번호가 틀렸습니다. \r\n비밀번호를 다시 입력해주세요.");
+                        passwordCheck1 = true;
                     }
                 }
             }
 
             else
             {
-                MessageBox.Show("변경할 비밀번호를 입력해주세요.");
+                MessageBox.Show("비밀번호를 확인해주세요.");
             }
         }
 
         private void Btn_back_Click(object sender, RoutedEventArgs e)
         {
-            changedPassword.Text = "변경할 비밀번호를 입력해주세요.(영어숫자만)";
+            changedPassword.Text = "비밀번호를 입력해주세요.";
             password.Text = "";
             passwordCheck1 = false;
         }

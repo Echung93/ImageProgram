@@ -14,8 +14,7 @@
 //        const string NAVER_DISPLAY_STRING = "&display=";
 //        const string NAVER_ID = "4djOgPTvaUjxuEqSudHM";
 //        const string NAVER_SECRET = "bDuwCmqIPr";
-//        public const string NAVER_URL = "https://openapi.naver.com/v1/search/book_adv.xml?d_titl=";
-//        Function function = new Function();
+//        public const string NAVER_URL = "https://openapi.naver.com/v1/search/image.xml?query=";
 //        public API()
 //        {
 
@@ -144,6 +143,7 @@
 
 //                else if (key.Key == ConsoleKey.Escape)
 //                {
+
 //                    goto Exit;
 //                }
 //            }

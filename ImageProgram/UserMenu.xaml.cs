@@ -22,7 +22,7 @@ namespace ImageProgram
     {
         public UserMenu()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }     
     }
 }
