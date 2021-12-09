@@ -23,8 +23,10 @@ namespace ImageProgram
     {
         DB db = new DB();
         List<User> userList;
-        string userId = "kty309";
+        string userId;
         bool passwordCheck1 = false;
+        LoginWindow loginWindow = new LoginWindow();
+
         public PasswordAlter()
         {
             InitializeComponent();
@@ -67,6 +69,7 @@ namespace ImageProgram
 
         private void alter_Click(object sender, RoutedEventArgs e)
         {
+            userId = loginWindow.CurrentUserID();
             if (passwordCheck1)
             {
                 userList = db.userList(userList);

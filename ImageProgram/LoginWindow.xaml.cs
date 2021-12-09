@@ -21,19 +21,21 @@ namespace ImageProgram
     {
         UserMenu userMenu = new UserMenu();
         MainControl mainControl = new MainControl();
-        MainWindow mainWindow = new MainWindow();
         AddressAlter addressAlter = new AddressAlter();
         PasswordAlter passwordAlter = new PasswordAlter();
         PhoneNumberAlter phoneNumberAlter = new PhoneNumberAlter();
         ViewUserInformation viewUserInformation = new ViewUserInformation();
         ModifyUserInformation modifyUserInformation = new ModifyUserInformation();
-        
-        public static string loginUser;
+       
+        public static string loginID;
+        public static string currentUser;
 
         public LoginWindow()
         {
             InitializeComponent();
             loginGrid.Children.Add(userMenu);
+            loginID = mainControl.CurrentUser();
+            userMenu.loginUser.Text = $"{loginID}님 환영합니다.";
             modifyUserInformation.Btn_back.Click += Btn_back_Click;
             modifyUserInformation.Btn_userInformation.Click += Btn_userInformation_Click;
             modifyUserInformation.Btn_addressAlter.Click += Btn_addressAlter_Click;
@@ -48,6 +50,12 @@ namespace ImageProgram
             userMenu.userInformationAlter.Click += Btn_userInformationAlter_Click;
             userMenu.searchImage.Click += Btn_searchImage_Click;
 
+        }
+
+        public string CurrentUserID()
+        {
+            currentUser = loginID;
+            return currentUser;
         }
 
         public void Btn_logout_Click(object sender, RoutedEventArgs e)

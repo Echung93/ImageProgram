@@ -21,10 +21,11 @@ namespace ImageProgram
     /// </summary>
     public partial class PhoneNumberAlter : UserControl
     {
+        LoginWindow loginWindow = new LoginWindow();
         DB db = new DB();
         List<User> userList;
         string userId = "kty309";
-
+        
         bool phoneNumberCheck1 = false;
 
         public PhoneNumberAlter()
@@ -68,6 +69,7 @@ namespace ImageProgram
 
         private void alter_Click(object sender, RoutedEventArgs e)
         {
+            userId = loginWindow.CurrentUserID();
             if (phoneNumberCheck1)
             {
                 userList = db.userList(userList);

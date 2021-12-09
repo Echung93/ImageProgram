@@ -21,9 +21,10 @@ namespace ImageProgram
     /// </summary>
     public partial class AddressAlter : UserControl
     {
+        LoginWindow loginWindow = new LoginWindow();
         DB db = new DB();
         List<User> userList;
-        string userId = "kty309";
+        string userId;
         bool addressCheck1 = false;
 
         public AddressAlter()
@@ -33,6 +34,7 @@ namespace ImageProgram
 
         private void alter_Click(object sender, RoutedEventArgs e)
         {
+            userId = loginWindow.CurrentUserID();
             if (addressCheck1)
             {
                 userList = db.userList(userList);

@@ -75,7 +75,7 @@ namespace ImageProgram
         public void Btn_login_Click(object sender, RoutedEventArgs e)
         {
             MainGrid.Children.Clear();
-            name = mainControl.login();
+            name = mainControl.Login();
             userMenu.loginUser.Text = $"{name}님 환영합니다.";
 
             if (name != null)
@@ -83,10 +83,6 @@ namespace ImageProgram
                 loginWin = new LoginWindow();
                 loginWin.Owner = this;
                 loginWin.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-                int num = mainControl.loginUserName.Text.IndexOf("님");
-                name = mainControl.loginUserName.Text.Substring(0,num);
-                
                 this.Hide();
                 loginWin.ShowDialog();
                 this.Show();

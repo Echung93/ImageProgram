@@ -26,6 +26,7 @@ namespace ImageProgram
         RegisterPage registerPage = new RegisterPage();
         UserMenu usermenu = new UserMenu();
         DB db = new DB();
+
         
         
         List<User> userList = new List<User>();
@@ -34,6 +35,7 @@ namespace ImageProgram
         string id;
         string pw;
         public static string loginUser;
+        public static string loginUserID;
 
         public MainControl()
         {
@@ -42,6 +44,15 @@ namespace ImageProgram
         public void Btn_register_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public string CurrentUser()
+        {
+            string currentUser;
+
+            currentUser = loginUserID;
+            
+            return currentUser;
         }
 
         private void Btn_login_Click(object sender, RoutedEventArgs e)
@@ -92,7 +103,7 @@ namespace ImageProgram
             //}
         }
 
-        public string login ()
+        public string Login()
         {
             string action = "로그인";
             bool idCheck = false;
@@ -113,8 +124,9 @@ namespace ImageProgram
                         db.LogSave(count + 1, userList[i].UserName, time, action, null);
                         pwCheck = true;
                         loginUser = userList[i].UserName;
-                        loginUserName.Text = $"{loginUser}님이 로그인 하셨습니다.";
-                        usermenu.loginUser.Text = $"{loginUser}님 환영합니다.";
+                        loginUserID = userList[i].UserId;
+                        IDInput.Text = "";
+                        PWInput.Password = "";
                     }
                     idCheck = true;
                 }
